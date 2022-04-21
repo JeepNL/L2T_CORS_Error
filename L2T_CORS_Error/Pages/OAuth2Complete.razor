@@ -1,0 +1,57 @@
+﻿@page "/OAuth2/Complete"
+@using LinqToTwitter;
+@using LinqToTwitter.Common;
+@using LinqToTwitter.OAuth;
+@inject NavigationManager NavMan
+
+<PageTitle>OAuth2/Complete</PageTitle>
+
+<h1>OAuth2/Complete</h1>
+
+@code {
+    [Parameter][SupplyParameterFromQuery] public string error { get; set; } = "access_denied";
+    [Parameter][SupplyParameterFromQuery] public string code { get; set; } = "";
+    [Parameter][SupplyParameterFromQuery] public string state { get; set; } = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (error == "access_denied")
+        {
+            Console.WriteLine($"***** error: {error}");
+            //NavMan.NavigateTo("/");
+        }
+        else
+        {
+            OAuth2Authorizer? auth = new()
+                {
+                    CredentialStore = new OAuth2CredentialStore()
+                    {
+                        ClientID = "ZE5zckpGUVYxZ0ROZmU5OXFjdjg6MTpjaQ",
+                        CodeChallenge = code, // Is 'code' the 'CodeChallenge'?
+                        State = state,
+                        Scopes = new List<string> // Is this needed at this point (already set in Login.razor)?
+                        {
+                            "tweet.read",
+                            "tweet.write",
+                            "users.read",
+                            "follows.read",
+                            "offline.access"
+                        },
+                        RedirectUri = "https://127.0.0.1/OAuth2/Complete", // This is needed, although the callback already happened (this page). L2T gives an error if it's not set.
+                    }
+                };
+            await auth.CompleteAuthorizeAsync(code, state); // Here I'm getting the CORS error.
+
+            IOAuth2CredentialStore? credentials = auth.CredentialStore as IOAuth2CredentialStore;
+
+            Console.WriteLine($"***** credentials.ClientID: {credentials?.ClientID}");
+            Console.WriteLine($"***** credentials.AccessToken: {credentials?.AccessToken}");
+            Console.WriteLine($"***** credentials.RefreshToken: {credentials?.RefreshToken}");
+            Console.WriteLine($"***** credentials.CodeChallenge: {credentials?.CodeChallenge}");
+            Console.WriteLine($"***** credentials.State: {credentials?.State}");
+            Console.WriteLine($"***** credentials.Scopes: {credentials?.Scopes}");
+
+            //NavMan.NavigateTo("/");
+        }
+    }
+}

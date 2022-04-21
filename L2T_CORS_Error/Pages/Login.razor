@@ -1,0 +1,29 @@
+﻿@page "/login"
+@inject NavigationManager NavMan
+
+<PageTitle>Log in</PageTitle>
+
+<h1>Log in</h1>
+
+<button class="btn btn-primary" @onclick=TwitterOAuth2>Login with Twitter</button>
+
+@code {
+    private void TwitterOAuth2()
+    {
+        string clientId = "YOUR_CLIENT_ID"; // Fill in your client id from Twitter
+        string scope = "tweet.read tweet.write users.read follows.read offline.access";
+        string redirectUri = "https://127.0.0.1/OAuth2/Complete";
+        string state = "MyState";
+
+        // To build this URL I follow the Twitter docs (Step2 with offline_access): https://developer.twitter.com/en/docs/authentication/oauth-2-0/user-access-token
+
+        string loginWithTwitterUrl = "https://twitter.com/i/oauth2/authorize?response_type=code"
+                + $"&client_id={clientId}"
+                + $"&redirect_uri={redirectUri}"
+                + $"&scope={scope}"
+                + $"&state={state}"
+                + $"&code_challenge=challenge&code_challenge_method=plain";
+
+        NavMan.NavigateTo(loginWithTwitterUrl, true);
+    }
+}
