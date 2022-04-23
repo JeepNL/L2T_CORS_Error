@@ -29,7 +29,7 @@ I've created a GitHub repo for this issue [here](https://github.com/JeepNL/L2T_C
 
   * OAuth 2.0: True / On
   * Type of App: Single page App
-  * Callback URI / Redirect URL = "https://127.0.0.1/OAuth2/Complete";
+  * Callback URI / Redirect URL = `https://127.0.0.1/OAuth2/Complete`;
 
 * In [/Pages/Login.razor](L2T_CORS_Error/Pages/Login.razor)
   * Fill in your `clientId` (_from Twitter_)
