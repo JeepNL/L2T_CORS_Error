@@ -31,14 +31,14 @@ I've created a GitHub repo for this issue [here](https://github.com/JeepNL/L2T_C
   * Type of App: Single page App
   * Callback URI / Redirect URL = `https://127.0.0.1/OAuth2/Complete`;
 
-* In [/Pages/Login.razor](L2T_CORS_Error/Pages/Login.razor)
+* In [/Pages/Login.razor](https://github.com/JeepNL/L2T_CORS_Error/blob/master/L2T_CORS_Error/Pages/Login.razor)
   * Fill in your `clientId` (_from Twitter_)
 
 **The Begin / Complete authentication process**
 
-I do this a bit different than in your examples, that is: the 'Begin' part. I configure the URL to authenticate with Twitter in [/Pages/Login.razor](L2T_CORS_Error/Pages/Login.razor). This works, when you click the 'Login with Twitter' button you'll be redirected to the Twitter authentication page.
+I do this a bit different than in your examples, that is: the 'Begin' part. I configure the URL to authenticate with Twitter in [/Pages/Login.razor](https://github.com/JeepNL/L2T_CORS_Error/blob/master/L2T_CORS_Error/Pages/Login.razor). This works, when you click the 'Login with Twitter' button you'll be redirected to the Twitter authentication page.
 
-When returning from Twitter to [/Pages/OAuth2Complete.razor](L2T_CORS_Error/Pages/OAuth2Complete.razor) (*= `https://127.0.0.1/OAuth2/Complete`*) I'm getting the CORS error at line 43:
+When returning from Twitter to [/Pages/OAuth2Complete.razor](https://github.com/JeepNL/L2T_CORS_Error/blob/master/L2T_CORS_Error/Pages/OAuth2Complete.razor) (*= `https://127.0.0.1/OAuth2/Complete`*) I'm getting the CORS error at line 43:
 
 * `await auth.CompleteAuthorizeAsync(code, state);`
 
@@ -86,7 +86,7 @@ System.Net.Http.HttpRequestException: TypeError: Failed to fetch
 
 **1b) Screenshot of Dev Console Error**
 
-![Screenshot](L2T_CORS_Console.jpg)
+![Screenshot](https://github.com/JeepNL/L2T_CORS_Error/raw/master/L2T_CORS_Console.jpg)
 
 **2a) Text Dev Console Request/Response Headers**
 
@@ -143,4 +143,6 @@ user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 
 **2b) Screenshot of Dev Console Request/Response Headers**
 
-![Screenshot](L2T_CORS_Devtools.jpg)
+![Screenshot](https://github.com/JeepNL/L2T_CORS_Error/raw/master/L2T_CORS_Devtools.jpg)
+
+
