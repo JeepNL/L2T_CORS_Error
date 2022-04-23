@@ -15,7 +15,7 @@
 
 This is issue occurs with a similar static Blazor WASM SPA project as I mentioned in issue [283](https://github.com/JoeMayo/LinqToTwitter/issues/283)
 
-In this project I've added the L2T library to the client as well*. The client (*the browser*) is making the requests directly to the Twitter v2 API.
+In this project I've added the L2T library to the client*. The client (*the browser*) is making the requests directly to the Twitter v2 API.
 
 *) Because adding `LinqToTwitter.AspNet` library to a project such as this gives a build error (*see issue: [283](https://github.com/JoeMayo/LinqToTwitter/issues/283)*) I'm using the `LinqToTwitter` library here. Maybe that's why this error occurs?
 
@@ -58,9 +58,7 @@ There are 3 different Blazor configurations:
 * Hosted Client Side Blazor WASM *(= Static Client Side Blazor + (server/hosted) Web API)*
 * Static Client Side Blazor WASM
 
-When I first started with L2T & Blazor WASM I thought adding the L2T Library to the client wasn't a good idea, but I was wrong. Because in many cases it makes more sense to contact the Twitter API from the client's browser directly. With some streaming scenarios it's a different story, having an inbetween server (web API) can be useful.
-
-
+When I first started with L2T & Blazor WASM I thought adding the L2T Library to the client wasn't a good idea, but I was wrong. Because in many cases it makes more sense to contact the Twitter API from the client's browser directly. With some streaming scenarios it's a different story, having an in-between server (web API) can be useful.
 
 **1a) Text Dev Console Error**
 ```
@@ -144,5 +142,4 @@ user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 **2b) Screenshot of Dev Console Request/Response Headers**
 
 ![Screenshot](https://github.com/JeepNL/L2T_CORS_Error/raw/master/L2T_CORS_Devtools.jpg)
-
 
